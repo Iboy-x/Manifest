@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Pure dark theme: all greys and blacks */
+    --background: 0 0% 7%;      /* #121212 */
+    --foreground: 0 0% 88%;     /* #e2e2e2 */
+    --card: 0 0% 11%;           /* #1e1e1e */
+    --card-foreground: 0 0% 88%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 88%;
+    --primary: 0 0% 88%;        /* #e2e2e2 */
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 17%;      /* #2d2d2d */
+    --secondary-foreground: 0 0% 88%;
+    --muted: 0 0% 17%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 0% 88%;
+    --destructive: 0 0% 30%;    /* dark red/grey */
+    --destructive-foreground: 0 0% 88%;
+    --border: 0 0% 17%;
+    --input: 0 0% 17%;
+    --ring: 0 0% 88%;
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-border: 0 0% 17%;
+    --radius: 0.75rem;
+    --dream-progress: 0 0% 17%;
+    --streak-color: 0 0% 88%;
+    --quote-bg: 0 0% 11%;
+    --shadow-soft: 0 0% 0% / 0.05;
+    --shadow-medium: 0 0% 0% / 0.1;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+  }
+  .dark {
+    /* No-op: all variables are already dark */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+}
+
+@layer components {
+  .manifestor-card {
+    @apply bg-card border border-border rounded-lg shadow-[0_2px_8px_hsl(var(--shadow-soft))] transition-[var(--transition-smooth)] hover:shadow-[0_4px_16px_hsl(var(--shadow-medium))];
+  }
+  .manifestor-sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md transition-[var(--transition-fast)] hover:bg-sidebar-accent text-sidebar-foreground;
+  }
+  .manifestor-sidebar-item.active {
+    @apply bg-sidebar-accent text-sidebar-foreground font-medium;
+  }
+  .manifestor-progress-bar {
+    @apply w-full bg-muted rounded-full h-2 overflow-hidden;
+  }
+  .manifestor-progress-fill {
+    @apply h-full bg-primary transition-[width] duration-300 ease-out rounded-full;
+  }
+  .manifestor-floating-button {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-[0_4px_16px_hsl(var(--shadow-medium))] flex items-center justify-center transition-[var(--transition-smooth)] hover:scale-105 active:scale-95;
+  }
+  .manifestor-quote-box {
+    @apply bg-[hsl(var(--quote-bg))] border border-border rounded-lg p-6 italic text-muted-foreground;
+  }
+  .manifestor-streak-badge {
+    @apply bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium;
+  }
+}
